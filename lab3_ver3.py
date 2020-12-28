@@ -18,9 +18,10 @@ color_1 = (255, 255, 255, 0)
 color_2 = (0, 0, 0, 0)
 
 with open("smth.bmp", "w+b") as f:
-    f.write(struct.pack("<HL2HL", 19778, 62+1000*1000, 0, 0, 62))
-    f.write(struct.pack("<3L2H6L", 40, 1000, 1000, 1, 8, 0, 0, 0, 0, 2, 0))
-    f.write(struct.pack("<8B", *(255, 255, 255, 0), *(0, 0, 0, 0)))
+    f.write(struct.pack("<HL2HL3L2H6L8B", 19778, 62+1000*1000,
+                        0, 0, 62, 40, 1000, 1000, 1, 8, 0, 0, 0, 0, 2, 0,
+                        *(255, 255, 255, 0), *(0, 0, 0, 0)))
+
 
     for y_counter in range(1000):
         x_offset = -3
